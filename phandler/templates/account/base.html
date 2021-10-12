@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 {% load static %}
 
 {% block body_class %}app app-login p-0{% endblock %}
@@ -12,7 +11,7 @@
             <a class="app-logo" href="{% url "home" %}">
               <img class="logo-icon me-2" src="{% static 'images/app-logo.svg' %}" alt="logo"></a>
           </div>
-          <h2 class="auth-heading text-center mb-5">Log in to PHandler</h2>
+          <h2 class="auth-heading text-center mb-5">{% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}</h2>
           <div class="auth-form-container text-start">
             {% block inner %}
             {% endblock inner %}
