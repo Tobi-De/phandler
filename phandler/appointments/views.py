@@ -7,21 +7,13 @@ from django_tables2.export.views import ExportMixin
 from django_tables2.views import SingleTableMixin
 
 from .filters import AppointmentFilter
+from .forms import AppointmentForm
 from .models import Appointment
 from .tables import AppointmentTable
 
 
 class AppointmentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = Appointment
-    fields = [
-        "record",
-        "doctor",
-        "sickness",
-        "prescriptions",
-        "cost",
-        "accepted",
-        "date",
-    ]
+    form_class = AppointmentForm
     template_name = "appointments/create.html"
     success_message = "New appointments crated"
     success_url = reverse_lazy("appointments:list")

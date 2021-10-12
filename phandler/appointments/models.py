@@ -14,6 +14,9 @@ class Appointment(TimeStampedModel):
     cost = MoneyField(max_digits=14, decimal_places=2, default_currency="XOF")
     date = models.DateTimeField()
     accepted = models.BooleanField(default=True)
+    duration = models.PositiveSmallIntegerField(
+        default=30, help_text="Duration in minutes"
+    )
 
     def __str__(self):
         return f"{self.record.patient} - {self.doctor} - {self.date}"

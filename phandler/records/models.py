@@ -31,7 +31,7 @@ class Patient(Person):
 
 
 class Doctor(Person):
-    specialities = ArrayField(models.CharField(max_length=30), default=list, blank=True)
+    specialities = ArrayField(models.CharField(max_length=30), default=list)
 
 
 class Record(TimeStampedModel):

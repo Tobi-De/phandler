@@ -13,6 +13,7 @@ class AppointmentTable(tables.Table):
             "prescriptions",
             "cost",
             "accepted",
+            "duration",
             "date",
         ]
 
