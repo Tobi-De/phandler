@@ -8,10 +8,6 @@ from django.views.generic import DetailView, RedirectView, UpdateView, TemplateV
 User = get_user_model()
 
 
-class DashboardView(LoginRequiredMixin, TemplateView):
-    template_name = "users/dashboard.html"
-
-
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"

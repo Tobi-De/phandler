@@ -79,6 +79,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "phandler.users.apps.UsersConfig",
+    "phandler.core.apps.CoreConfig",
     "phandler.records.apps.RecordsConfig",
     "phandler.appointments.apps.AppointmentsConfig"
 ]

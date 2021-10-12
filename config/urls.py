@@ -4,10 +4,11 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 
-from phandler.users.views import DashboardView
+from phandler.core.views import HomeView, HelpView
 
 urlpatterns = [
-    path("", DashboardView.as_view(), name="dashboard"),
+    path("", HomeView.as_view(), name="home"),
+    path("help/", HelpView.as_view(), name="help"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
