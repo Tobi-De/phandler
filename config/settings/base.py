@@ -71,11 +71,16 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "django_filters",
+    "import_export",
+    "django_tables2",
+    "crispy_bootstrap5",
 ]
 
 LOCAL_APPS = [
     "phandler.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
+    "phandler.records.apps.RecordsConfig",
+    "phandler.appointments.apps.AppointmentsConfig"
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -192,7 +197,9 @@ TEMPLATES = [
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # FIXTURES
 # ------------------------------------------------------------------------------
@@ -240,7 +247,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -252,7 +259,6 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
-
 
 # django-allauth
 # ------------------------------------------------------------------------------
@@ -267,7 +273,6 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "phandler.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "phandler.users.adapters.SocialAccountAdapter"
-
 
 # Your stuff...
 # ------------------------------------------------------------------------------
