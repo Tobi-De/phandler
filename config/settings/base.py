@@ -62,7 +62,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
     "django.forms",
 ]
@@ -75,13 +75,15 @@ THIRD_PARTY_APPS = [
     "import_export",
     "django_tables2",
     "crispy_bootstrap5",
+    "phonenumber_field",
+    "djmoney",
 ]
 
 LOCAL_APPS = [
     "phandler.users.apps.UsersConfig",
     "phandler.core.apps.CoreConfig",
     "phandler.records.apps.RecordsConfig",
-    "phandler.appointments.apps.AppointmentsConfig"
+    "phandler.appointments.apps.AppointmentsConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -248,7 +250,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-                      "%(process)d %(thread)d %(message)s"
+            "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -265,7 +267,7 @@ LOGGING = {
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -275,5 +277,7 @@ ACCOUNT_ADAPTER = "phandler.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "phandler.users.adapters.SocialAccountAdapter"
 
-# Your stuff...
+# Django-tables2
 # ------------------------------------------------------------------------------
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"

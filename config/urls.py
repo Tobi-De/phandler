@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 
-from phandler.core.views import HomeView, HelpView
+from phandler.core.views import HelpView, HomeView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
@@ -14,6 +14,10 @@ urlpatterns = [
     # User management
     path("users/", include("phandler.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("records/", include("phandler.records.urls", namespace="records")),
+    path(
+        "appointments/", include("phandler.appointments.urls", namespace="appointments")
+    )
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

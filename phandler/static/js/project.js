@@ -91,3 +91,21 @@ searchMobileTrigger.addEventListener('click', () => {
 });
 
 
+// add datepicker widget
+try {
+    const formatter = (input, date, instance) => {
+        input.value = date.toLocaleDateString()
+    }
+    const startPeriodEl = document.getElementById("id_period_from")
+    const endPeriodEl = document.getElementById("id_period_to")
+    if (startPeriodEl === null && endPeriodEl === null) {
+        document.querySelectorAll(".dateinput").forEach(el => {
+            window.datepicker(el, {formatter})
+        })
+    } else {
+        window.datepicker(startPeriodEl, {id: 1, formatter})
+        window.datepicker(endPeriodEl, {id: 1, formatter})
+    }
+} catch (e) {
+    console.log(e)
+}

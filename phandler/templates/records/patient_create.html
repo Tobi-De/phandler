@@ -1,0 +1,28 @@
+{% extends "layouts/admin.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+
+
+{% block main_content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-3 my-2 border-radius-xl bg-white">
+          <h3>Register Patient</h3>
+          <div class="card-body">
+            <div class="col-9">
+              <h5 class="mb-2">
+                {{ view.form_title }}
+              </h5>
+            </div>
+            <form method="post">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <button class="btn app-btn-primary" type="submit">{% trans "Submit" %}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock main_content %}
