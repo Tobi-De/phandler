@@ -6,6 +6,8 @@ from django_filters.views import FilterView
 from django_tables2.export.views import ExportMixin
 from django_tables2.views import SingleTableMixin
 
+from phandler.appointments.tables import AppointmentTable
+
 from .filters import DoctorFilter, PatientFilter, RecordFilter
 from .models import Doctor, Patient, Record
 from .tables import DoctorTable, PatientTable
@@ -68,7 +70,11 @@ class RecordListView(LoginRequiredMixin, FilterView):
     paginate_by = 12
 
 
-class RecordDetailView(LoginRequiredMixin, DetailView):
+class RecordDetailView(LoginRequiredMixin, SingleTableMixin, DetailView):
     model = Record
     context_object_name = "record"
     template_name = "records/detail.html"
+    table_class = AppointmentTable
+
+    def get_table_data(self):
+        return self.object.history.all().order_by("-date")

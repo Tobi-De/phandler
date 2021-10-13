@@ -29,6 +29,9 @@ class Patient(Person):
     age = models.PositiveSmallIntegerField()
     allergies = ArrayField(models.CharField(max_length=30), default=list, blank=True)
 
+    def allergies_str(self) -> str:
+        return ", ".join(self.allergies)
+
 
 class Doctor(Person):
     specialities = ArrayField(models.CharField(max_length=30), default=list)
